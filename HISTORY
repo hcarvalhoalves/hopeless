@@ -1,13 +1,4 @@
-HISTORY OF HOPELESS
-
-27 Jun 2007	Released Hopeless v0.1
-
-26 Jun 2007	fork -> Hopeless
-		option -v prints new name and version
-		interactive command "write" does not print quotatons now
-		new interactive command "help" prints list of available commands
-
-REVISION HISTORY
+REVISION HISTORY [Ross Paterson]
 
 I originally wrote this interpreter to have a well-behaved implementation
 of a simple functional language for use with an undergraduate course.
@@ -70,3 +61,17 @@ of a simple functional language for use with an undergraduate course.
 11 Jun 1997	added -f command line argument, #! hack and argv.
 
 16 Apr 1999	cleanup, autoconf, GPL.
+
+HISTORY OF HOPELESS [Alexander Shabarshin]
+
+26 Jun 2007	fork named "Hopeless" (see http://www.funnylang.org)
+		option -v prints new name and version
+		interactive command "write" does not print quotatons now
+		new interactive command "help" prints list of available commands
+
+27 Jun 2007	released Hopeless v0.1
+
+01 Sep 2007     function "read" now can run commands (if filename starts with !)
+		new example test/_run.hop demonstrates #!/..., argv and read("!...")
+		
+02 Sep 2007	released Hopeless v0.2

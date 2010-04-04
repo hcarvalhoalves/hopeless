@@ -12,7 +12,7 @@
 #endif
 
 #define APPNAME "Hopeless"
-#define VERSION "v0.1"
+#define VERSION "v0.2"
 
 global	Bool	restricted;	/* disable file I/O */
 global	int	time_limit;	/* evaluation time limit in seconds */

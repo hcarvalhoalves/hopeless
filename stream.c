@@ -22,6 +22,8 @@ local	void	end_stream(FILE *f);
 global Cell *
 open_stream(Cell *arg)
 {
+        int     shIndex;
+	char    shOut[8];
 	char	filename[MAX_FILENAME];
 	FILE	**fp;
 
@@ -31,9 +33,23 @@ open_stream(Cell *arg)
 	hope2c((Byte *)filename, MAX_FILENAME, arg);
 
 	/* find a free slot in the stream table */
+	shIndex = 0;
 	for (fp = str_table; *fp != NULL; fp++)
+	{
 		if (fp == &str_table[MAX_STREAMS])
 			error(EXECERR, "stream table full");
+		shIndex++;	
+	}		
+
+        if(*filename=='!')
+	{
+	   /* this filename is command to run */
+	   sprintf(shOut,"%02d.out",shIndex);
+	   strcat(filename," >");
+	   strcat(filename,shOut);
+	   system(&filename[1]);
+	   strcpy(filename,shOut);
+	}
 
 	/* try to open the file */
 	if ((*fp = fopen(filename, "r")) == NULL)

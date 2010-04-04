@@ -1,0 +1,4 @@
+#!/usr/local/bin/hopeless -f
+uses lines;
+write argv to "argv.txt";
+lines(read("!hopeless -f io.in"));
