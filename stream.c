@@ -22,7 +22,7 @@ local   void    end_stream(FILE *f);
 global Cell *
 open_stream(Cell *arg)
 {
-        char    shOut[20];
+        char    shOut[20], *po;
         char    filename[MAX_FILENAME];
         FILE    **fp;
 #if 0
@@ -43,6 +43,12 @@ open_stream(Cell *arg)
            /* this filename is command to run */
            strcpy(shOut,"/tmp/hopeXXXXXX");
            mktemp(shOut);
+           /* check for new line character */
+           po = strchr(filename,'\n');
+           if(po!=NULL) *po = 0;
+           po = strchr(filename,'\r');
+           if(po!=NULL) *po = 0;
+           /* send output to temporary file */
            strcat(filename," >");
            strcat(filename,shOut);
            system(&filename[1]);

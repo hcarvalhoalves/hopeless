@@ -1,1 +1,1 @@
-#define HOPELIB "/usr/local/share/hope/lib"
+#define HOPELIB "/usr/local/share/hopeless"

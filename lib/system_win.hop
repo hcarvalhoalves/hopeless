@@ -1,10 +1,7 @@
 uses lines,string,words;
 
-dec getc : list(char);
---- getc <= read("con");
-
-dec gets : list(string);
---- gets <= lines(getc);
+dec stdin : list(char);
+--- stdin <= "con";
 
 dec dir : string -> list(string);
---- dir(s) <= words(read("!dir /w " <> s));
+--- dir(s) <= words(read("!cmd /C DIR /B " <> s));

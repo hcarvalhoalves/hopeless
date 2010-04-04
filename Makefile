@@ -16,7 +16,7 @@ testdir = ../test
 # more stuff from configure:
 AWK	= gawk
 CC	= gcc
-CFLAGS	= -g -O2 -pipe -pedantic -Wall -W -Wshadow -Wbad-function-cast -Wcast-qual -Wcast-align -Wwrite-strings -Wpointer-arith -Wnested-externs -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations
+CFLAGS	= -O2 -pipe -pedantic -Wall -W -Wshadow -Wbad-function-cast -Wcast-qual -Wcast-align -Wwrite-strings -Wpointer-arith -Wnested-externs -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations
 INSTALL	= /usr/bin/ginstall -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
@@ -26,7 +26,7 @@ YACC	= bison -y
 mandir	= ${prefix}/man/man1
 
 # Where the standard modules live.
-hopelib	= ${prefix}/share/hope/lib
+hopelib	= ${prefix}/share/hopeless
 
 c_srcs = bad_rectype.c builtin.c cases.c char.c char_array.c compare.c \
         compile.c deftype.c eval.c expr.c functor_type.c functors.c \
@@ -53,8 +53,9 @@ $(name): $(objects)
 
 all: $(name) $(name).1
 
-install: check $(name).1
+install: 
 	$(INSTALL) -d $(hopelib)
+	for f in lib/*.hop; do $(INSTALL_DATA) $$f $(hopelib); done
 	$(INSTALL_PROGRAM) -s $(name) $(bindir)
 	$(INSTALL_DATA) $(name).1 $(mandir)
 

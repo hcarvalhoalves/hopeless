@@ -1,4 +1,6 @@
 #!/usr/local/bin/hopeless -f
 uses system,list;
+dec keyboard: list(string);
+--- keyboard<=lines(read(stdin));
 write "Press Ctrl-D to quit\n";
-write (map reverse gets);
+write (map reverse keyboard);

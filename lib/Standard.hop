@@ -146,6 +146,8 @@ dec erf, erfc : num -> num;
 
 dec argv : list(list char);
 
+! Subset of environment variables suitable for CGI
+
 dec env : list(list char);
 
 ! Part of the special treatment of the succ constructor.

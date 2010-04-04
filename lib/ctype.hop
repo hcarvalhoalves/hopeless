@@ -13,7 +13,7 @@ dec tolower, toupper : char -> char;
 --- isdigit c <= '0' =< c and c =< '9';
 --- isxdigit c <= isdigit c or 'a' =< c and c =< 'f' or 'A' =< c and c =< 'F';
 --- isalnum c <= isalpha c or isdigit c;
---- isspace c <= c = ' ' or c = '\t' or c = '\n';
+--- isspace c <= c = ' ' or c = '\t' or c = '\n' or c = '\r';
 --- ispunct c <= isgraph c and c /= ' ' and not(isalnum c);
 --- isctrl c <= isascii c and not(isgraph c);
 --- isgraph c <= ' ' =< c and c =< '~';

@@ -1,10 +1,13 @@
 uses lines,string;
 
-dec getc : list(char);
---- getc <= read("/dev/stdin");
-
-dec gets : list(string);
---- gets <= lines(getc);
+dec stdin : list(char);
+--- stdin <= "/dev/stdin";
 
 dec dir : string -> list(string);
 --- dir(s) <= lines(read("!ls " <> s));
+
+dec del : string -> string;
+--- del(s) <= read("!rm -f " <> s);
+
+dec write_to : string # string -> string;
+--- write_to(s,f) <= read("!echo " <> s <> " | tee -a " <> f);

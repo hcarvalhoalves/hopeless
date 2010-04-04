@@ -96,3 +96,21 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
                 more available variables in "env" for CGI mode
 
 22 Jun 2008 >>> RELEASED HOPELESS v0.4
+
+24 Jun 2008     added '\r' to function "isspace" in ctype.hop
+                fixed function "dir" in system_win.hop
+
+03 Jun 2009     path to libraries changed to /usr/local/share/hopeless
+                created man file hopeless.1 (modified hope.1)
+                fixed "make install" for Hopeless
+                ref_man.pdf and hope_tut.pdf are part of distribution now
+                
+28 Aug 2009     new library lib/db_sqlite.hop (database support with sqlite3)
+
+29 Aug 2009     added functions "del" and "write_to" to lib/system.hop
+                check for '\n' and '\r' before run commands ("!...")
+                
+03 Sep 2009     defined constant "stdin" instead of functions "getc" and "gets" (lib/system.hop)
+                modified test _input.hop
+                
+06 Sep 2009	modified function "write_to" in lib/system.hop
