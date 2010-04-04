@@ -121,15 +121,16 @@ void help(void)
   printf("exit;\n");
 }
 
-#define VARS_LN 8
+#define VARS_LN 11
 #define VARS_SZ 20
 
 void create_envs(void)
 {
-  char str[100],*po;
+  char str[256],*po;
   int i,j;
-  char vars[VARS_LN][VARS_SZ] = {"USER", "LANG", "HTTP_HOST", "HTTP_USER_AGENT", "QUERY_STRING", 
-                                 "REMOTE_ADDR", "REQUEST_METHOD", "REQUEST_URI"};
+  char vars[VARS_LN][VARS_SZ] = { "USER", "LANG", "HTTP_HOST", "HTTP_USER_AGENT", "HTTP_COOKIE",
+       "HTTP_REFERER", "QUERY_STRING", "REMOTE_ADDR", "REMOTE_PORT", "REQUEST_METHOD", 
+       "REQUEST_URI" };
   cmd_envs = (char**)malloc((VARS_LN+1)*sizeof(char*));
   j = 0;
   for(i=0;i<VARS_LN;i++)

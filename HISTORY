@@ -69,12 +69,12 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
                 interactive command "write" does not print quotatons now
                 new interactive command "help" prints list of available commands
 
-27 Jun 2007     RELEASED HOPELESS v0.1
+27 Jun 2007 >>> RELEASED HOPELESS v0.1
 
 01 Sep 2007     function "read" now can run commands (if filename starts with !)
                 new example test/_run.hop demonstrates #!/..., argv and read("!...")
                 
-02 Sep 2007     RELEASED HOPELESS v0.2
+02 Sep 2007 >>> RELEASED HOPELESS v0.2
 
 03 Sep 2007     new example test/_input.hop demonstrates input from keyboard (stdin)
  
@@ -84,6 +84,15 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
 11 Sep 2007     new library lib/string.hop (right now only to define type "string")
                 added function "dir" to lib/system.hop and lib/system_win.hop
 
-05 Apr 2008     new predefined list env with some environment variables for CGI
+05 Apr 2008     new predefined list "env" with some environment variables for CGI
 
-21 Jun 2008     RELEASED HOPELESS v0.3
+21 Jun 2008 >>> RELEASED HOPELESS v0.3
+
+22 Jun 2008     separate file version.h for APPNAME and VERSION macros
+                longer supported filenames (now 256 instead of 100)
+                more simultaniously supported streams (now 100 instead of 20)
+                restricted mode (-r) now allows reading, but disables running commands ("!...")
+                now "mktemp" is used to create temporary filename for running commands
+                more available variables in "env" for CGI mode
+
+22 Jun 2008 >>> RELEASED HOPELESS v0.4

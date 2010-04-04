@@ -1,3 +1,4 @@
+
 #ifdef UCS
 
 #include "defs.h"
@@ -25,81 +26,81 @@
 global Char
 FetchChar(const Byte **p)
 {
-	Char	c;
-	int	extras;
-	unsigned bit;
+        Char    c;
+        int     extras;
+        unsigned bit;
 
-	extras = 0;
-	c = *(*p)++;
-	if ((c & 0x80) == 0)		/* ASCII character */
-		return c;
-	/* how many extra bytes? */
-	extras = 1;
-	for (bit = 0x20; (c & bit) != 0; bit >>= 1)
-		extras++;
-	if (bit > 0)
-		c &= bit-1;
-	while (extras-- > 0)
-		c = (c<<6) | *(*p)++&0x3f;
-	return c;
+        extras = 0;
+        c = *(*p)++;
+        if ((c & 0x80) == 0)            /* ASCII character */
+                return c;
+        /* how many extra bytes? */
+        extras = 1;
+        for (bit = 0x20; (c & bit) != 0; bit >>= 1)
+                extras++;
+        if (bit > 0)
+                c &= bit-1;
+        while (extras-- > 0)
+                c = (c<<6) | *(*p)++&0x3f;
+        return c;
 }
 
 global void
 BackChar(const Byte **p)
 {
-	while ((*--*p & 0xc0) == 0x80)
-		;
+        while ((*--*p & 0xc0) == 0x80)
+                ;
 }
 
 global long
 GetChar(FILE *f)
 {
-	int	c;
-	Char	wc;
-	int	extras;
-	unsigned bit;
+        int     c;
+        Char    wc;
+        int     extras;
+        unsigned bit;
 
-	extras = 0;
-	while ((c = getc(f)) != EOF) {
-		if ((c & 0x80) == 0)		/* ASCII character */
-			return (long)c;
-		if ((c & 0xc0) == 0x80) {	/* tail character */
-			if (extras > 0) {	/* in the right place */
-				wc = (wc<<6) | c&0x3f;
-				if (--extras == 0)
-					return (long)wc;
-			}
-		} else {				/* head of sequence */
-			/* how many extra bytes? */
-			wc = (Char)c;
-			extras = 1;
-			for (bit = 0x20; (wc & bit) != 0; bit >>= 1)
-				extras++;
-			if (bit > 0)
-				wc &= bit-1;
-		}
-	}
-	return EOF;
+        extras = 0;
+        while ((c = getc(f)) != EOF) {
+                if ((c & 0x80) == 0)            /* ASCII character */
+                        return (long)c;
+                if ((c & 0xc0) == 0x80) {       /* tail character */
+                        if (extras > 0) {       /* in the right place */
+                                wc = (wc<<6) | c&0x3f;
+                                if (--extras == 0)
+                                        return (long)wc;
+                        }
+                } else {                                /* head of sequence */
+                        /* how many extra bytes? */
+                        wc = (Char)c;
+                        extras = 1;
+                        for (bit = 0x20; (wc & bit) != 0; bit >>= 1)
+                                extras++;
+                        if (bit > 0)
+                                wc &= bit-1;
+                }
+        }
+        return EOF;
 }
 
 global void
 PutChar(Char *wc, FILE *f)
 {
-	Char	tmp;
-	int	extras;
+        Char    tmp;
+        int     extras;
 
-	if ((wc & ~0x7f) == 0) {
-		(void)putc(wc, f);
-		return;
-	}
-	/* how many extra bytes are required? */
-	extras = 1;
-	for (tmp = wc >> 11; tmp != 0; tmp >>= 5)
-		extras++;
-	/* put header Byte */
-	(void)putc(0xff&(0x7f80 >> extras) | (wc >> (extras*6)), f);
-	/* put tail bytes */
-	while (extras-- != 0)
-		(void)putc(0x80|0x3f&(wc >> (extras*6)), f);
+        if ((wc & ~0x7f) == 0) {
+                (void)putc(wc, f);
+                return;
+        }
+        /* how many extra bytes are required? */
+        extras = 1;
+        for (tmp = wc >> 11; tmp != 0; tmp >>= 5)
+                extras++;
+        /* put header Byte */
+        (void)putc(0xff&(0x7f80 >> extras) | (wc >> (extras*6)), f);
+        /* put tail bytes */
+        while (extras-- != 0)
+                (void)putc(0x80|0x3f&(wc >> (extras*6)), f);
 }
 #endif /* UCS */
