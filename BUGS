@@ -1,3 +1,9 @@
+NEW KNOWN BUGS:
+
+From time to time ';' is not needed in interactive commands...
+
+OLD KNOWN BUGS:
+
 There is no numeric overflow checking.
 
 Type synonyms are sometimes unrolled too much.
@@ -16,7 +22,7 @@ In order to have alpha', beta', etc accepted as type variables, primes
 are ignored in typevar declarations.
 
 If multiple-argument lambda-expressions are permitted, expressions like
-	lambda cons x => e
+        lambda cons x => e
 will no longer mean what they used to.  So currently there're not allowed.
 
 If you use "Standard-new.hop", strings and explicit lists get list types:

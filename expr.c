@@ -373,6 +373,7 @@ global void
 init_argv(void)
 {
 	def_value(id_expr(newstring("argv")), textlist(cmd_args));
+	def_value(id_expr(newstring("env")), textlist((const char *const *)cmd_envs));
 }
 
 local Expr *
@@ -380,6 +381,8 @@ textlist(const char *const *sp)
 {
 	return *sp == NULL ? e_nil :
 		apply_expr(e_cons,
-			pair_expr(text_expr((const Byte *)*sp, strlen(*sp)),
-			textlist(sp+1)));
+			pair_expr(
+			 text_expr((const Byte *)*sp, strlen(*sp)),
+			 textlist(sp+1)
+			));
 }

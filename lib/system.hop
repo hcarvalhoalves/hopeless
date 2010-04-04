@@ -1,0 +1,10 @@
+uses lines,string;
+
+dec getc : list(char);
+--- getc <= read("/dev/stdin");
+
+dec gets : list(string);
+--- gets <= lines(getc);
+
+dec dir : string -> list(string);
+--- dir(s) <= lines(read("!ls " <> s));

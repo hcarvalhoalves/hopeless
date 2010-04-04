@@ -2,7 +2,7 @@ A lazy interpreter for the functional language Hope
 Copyright 1990,1991,1993 by Ross Paterson <ross@soi.city.ac.uk>
 See also the WWW page at http://www.soi.city.ac.uk/~ross/Hope/
 
-Minor modifications by Alexander Shabarshin <alexander@shabarshin.com>
+Minor modifications by Alexander Shabarshin <ashabarshin@gmail.com>
 See http://www.funnylang.org for more info
 
 LICENSE AND DISCLAIMER
@@ -23,7 +23,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 SUBDIRECTORIES
 
-lib	various Hope modules (copy it to /usr/local/share/hope/lib)
-test	a small test suite for the interpreter
+lib     various Hope modules (copy it to /usr/local/share/hope/lib)
+test    a small test suite for the interpreter
 
-Use make to build this sources
+Use "make" to build this sources and then copy "hopeless" to /usr/local/bin

@@ -1,0 +1,11 @@
+#!/usr/local/bin/hopeless -f
+uses lines,system;
+write "Content-type: text/html\n\n";
+write "<html><body>\n";
+write "<h1>Hello, World!</h1>\n";
+write gets;
+write "<h1>Hello, Args!</h1>\n";
+write argv;
+write "<h1>Hello, Envs!</h1>\n";
+write env;
+write "</body></html>\n";

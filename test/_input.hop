@@ -1,0 +1,4 @@
+#!/usr/local/bin/hopeless -f
+uses system,list;
+write "Press Ctrl-D to quit\n";
+write (map reverse gets);

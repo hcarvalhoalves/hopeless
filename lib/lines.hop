@@ -21,7 +21,8 @@ private;
 --- lines [] <= [];
 --- lines(c::cs) <=
 	if c = '\n' then []::lines cs
-	else (lambda [] => [[c]]	! missing final newline
+	else if c = '\r' then lines cs else
+	     (lambda [] => [[c]]	! missing final newline
 	     |       l::ls => (c::l)::ls
 	     ) (lines cs);
 

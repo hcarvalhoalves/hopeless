@@ -1,0 +1,4 @@
+! String library
+
+type string == list(char);
+

@@ -101,6 +101,7 @@ extern	int	time_limit;	/* evaluation time limit in seconds */
 				/* default = 0 (no limit) */
 
 extern	const	char	*const	*cmd_args;	/* other arguments */
+extern char **cmd_envs; /* selected environment variables */
 
 #include "structs.h"
 

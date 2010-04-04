@@ -146,6 +146,8 @@ dec erf, erfc : num -> num;
 
 dec argv : list(list char);
 
+dec env : list(list char);
+
 ! Part of the special treatment of the succ constructor.
 
 dec succ : num -> num;
