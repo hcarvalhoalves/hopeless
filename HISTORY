@@ -114,3 +114,9 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
                 modified test _input.hop
                 
 06 Sep 2009	modified function "write_to" in lib/system.hop
+
+03 Apr 2010	created git repository (original, v0.1, v0.2, v0.3, v0.4, current)
+		fixed AUTHORS and README
+		
+04 Apr 2010 >>> RELEASED HOPELESS v0.5
+		

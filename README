@@ -3,7 +3,7 @@ Copyright 1990,1991,1993 by Ross Paterson <ross@soi.city.ac.uk>
 See also the WWW page at http://www.soi.city.ac.uk/~ross/Hope/
 
 Minor modifications by Alexander Shabarshin <ashabarshin@gmail.com>
-See http://www.funnylang.org for more info
+See http://www.hopelog.com for more info
 
 LICENSE AND DISCLAIMER
 
@@ -23,7 +23,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 SUBDIRECTORIES
 
-lib     various Hope modules (copy it to /usr/local/share/hope/lib)
+doc	some original documentation
+lib     various Hope modules (copy of /usr/local/share/hopeless)
 test    a small test suite for the interpreter
 
-Use "make" to build this sources and then copy "hopeless" to /usr/local/bin
+Use "make" to build hopeless binary file
+and "make install" to install everything to /usr/local
