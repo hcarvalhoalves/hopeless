@@ -1,7 +1,7 @@
-/* A Bison parser, made by GNU Bison 1.875a.  */
+/* A Bison parser, made by GNU Bison 2.1.  */
 
 /* Skeleton parser for Yacc-like parsing with Bison,
-   Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,8 +15,8 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place - Suite 330,
-   Boston, MA 02111-1307, USA.  */
+   Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.  */
 
 /* As a special exception, when this file is copied by Bison into a
    Bison output file, you may use that output file without restriction.
@@ -44,55 +44,57 @@
      TO = 270,
      EXIT = 271,
      EDIT = 272,
-     DEFEQ = 273,
-     OR = 274,
-     VALOF = 275,
-     IS = 276,
-     GIVES = 277,
-     THEN = 278,
-     FORALL = 279,
-     MODSYM = 280,
-     PUBCONST = 281,
-     PUBFUN = 282,
-     PUBTYPE = 283,
-     END = 284,
-     MU = 285,
-     IN = 286,
-     WHEREREC = 287,
-     WHERE = 288,
-     ELSE = 289,
-     BIN_BASE = 290,
-     LBINARY1 = 291,
-     RBINARY1 = 292,
-     LBINARY2 = 293,
-     RBINARY2 = 294,
-     LBINARY3 = 295,
-     RBINARY3 = 296,
-     LBINARY4 = 297,
-     RBINARY4 = 298,
-     LBINARY5 = 299,
-     RBINARY5 = 300,
-     LBINARY6 = 301,
-     RBINARY6 = 302,
-     LBINARY7 = 303,
-     RBINARY7 = 304,
-     LBINARY8 = 305,
-     RBINARY8 = 306,
-     LBINARY9 = 307,
-     RBINARY9 = 308,
-     NONOP = 309,
-     LAMBDA = 310,
-     IF = 311,
-     LETREC = 312,
-     LET = 313,
-     CHAR = 314,
-     LITERAL = 315,
-     NUMBER = 316,
-     IDENT = 317,
-     APPLY = 318,
-     ALWAYS_REDUCE = 319
+     HELP = 273,
+     DEFEQ = 274,
+     OR = 275,
+     VALOF = 276,
+     IS = 277,
+     GIVES = 278,
+     THEN = 279,
+     FORALL = 280,
+     MODSYM = 281,
+     PUBCONST = 282,
+     PUBFUN = 283,
+     PUBTYPE = 284,
+     END = 285,
+     MU = 286,
+     IN = 287,
+     WHEREREC = 288,
+     WHERE = 289,
+     ELSE = 290,
+     BIN_BASE = 291,
+     LBINARY1 = 292,
+     RBINARY1 = 293,
+     LBINARY2 = 294,
+     RBINARY2 = 295,
+     LBINARY3 = 296,
+     RBINARY3 = 297,
+     LBINARY4 = 298,
+     RBINARY4 = 299,
+     LBINARY5 = 300,
+     RBINARY5 = 301,
+     LBINARY6 = 302,
+     RBINARY6 = 303,
+     LBINARY7 = 304,
+     RBINARY7 = 305,
+     LBINARY8 = 306,
+     RBINARY8 = 307,
+     LBINARY9 = 308,
+     RBINARY9 = 309,
+     NONOP = 310,
+     LAMBDA = 311,
+     IF = 312,
+     LETREC = 313,
+     LET = 314,
+     CHAR = 315,
+     LITERAL = 316,
+     NUMBER = 317,
+     IDENT = 318,
+     APPLY = 319,
+     ALWAYS_REDUCE = 320
    };
 #endif
+/* Tokens.  */
 #define TYPEVAR 258
 #define ABSTYPE 259
 #define DATA 260
@@ -108,53 +110,54 @@
 #define TO 270
 #define EXIT 271
 #define EDIT 272
-#define DEFEQ 273
-#define OR 274
-#define VALOF 275
-#define IS 276
-#define GIVES 277
-#define THEN 278
-#define FORALL 279
-#define MODSYM 280
-#define PUBCONST 281
-#define PUBFUN 282
-#define PUBTYPE 283
-#define END 284
-#define MU 285
-#define IN 286
-#define WHEREREC 287
-#define WHERE 288
-#define ELSE 289
-#define BIN_BASE 290
-#define LBINARY1 291
-#define RBINARY1 292
-#define LBINARY2 293
-#define RBINARY2 294
-#define LBINARY3 295
-#define RBINARY3 296
-#define LBINARY4 297
-#define RBINARY4 298
-#define LBINARY5 299
-#define RBINARY5 300
-#define LBINARY6 301
-#define RBINARY6 302
-#define LBINARY7 303
-#define RBINARY7 304
-#define LBINARY8 305
-#define RBINARY8 306
-#define LBINARY9 307
-#define RBINARY9 308
-#define NONOP 309
-#define LAMBDA 310
-#define IF 311
-#define LETREC 312
-#define LET 313
-#define CHAR 314
-#define LITERAL 315
-#define NUMBER 316
-#define IDENT 317
-#define APPLY 318
-#define ALWAYS_REDUCE 319
+#define HELP 273
+#define DEFEQ 274
+#define OR 275
+#define VALOF 276
+#define IS 277
+#define GIVES 278
+#define THEN 279
+#define FORALL 280
+#define MODSYM 281
+#define PUBCONST 282
+#define PUBFUN 283
+#define PUBTYPE 284
+#define END 285
+#define MU 286
+#define IN 287
+#define WHEREREC 288
+#define WHERE 289
+#define ELSE 290
+#define BIN_BASE 291
+#define LBINARY1 292
+#define RBINARY1 293
+#define LBINARY2 294
+#define RBINARY2 295
+#define LBINARY3 296
+#define RBINARY3 297
+#define LBINARY4 298
+#define RBINARY4 299
+#define LBINARY5 300
+#define RBINARY5 301
+#define LBINARY6 302
+#define RBINARY6 303
+#define LBINARY7 304
+#define RBINARY7 305
+#define LBINARY8 306
+#define RBINARY8 307
+#define LBINARY9 308
+#define RBINARY9 309
+#define NONOP 310
+#define LAMBDA 311
+#define IF 312
+#define LETREC 313
+#define LET 314
+#define CHAR 315
+#define LITERAL 316
+#define NUMBER 317
+#define IDENT 318
+#define APPLY 319
+#define ALWAYS_REDUCE 320
 
 
 
@@ -175,8 +178,8 @@ typedef union YYSTYPE {
 	Branch	*branch;
 	Cons	*cons;
 } YYSTYPE;
-/* Line 1240 of yacc.c.  */
-#line 180 "y.tab.h"
+/* Line 1447 of yacc.c.  */
+#line 183 "y.tab.h"
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1

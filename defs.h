@@ -87,6 +87,8 @@ extern	void	edit(const char *name);
 #	define	edit(name)
 #endif
 
+extern  void	help(void);
+
 extern	void	init_lex(void);
 extern	int	yyparse(void);
 extern	int	yylex(void);

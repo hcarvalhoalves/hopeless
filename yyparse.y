@@ -15,7 +15,7 @@
 
 %token	TYPEVAR ABSTYPE DATA TYPESYM
 %token	DEC INFIX INFIXR USES PRIVATE
-%token	DISPLAY SAVE WRITE TO EXIT EDIT
+%token	DISPLAY SAVE WRITE TO EXIT EDIT HELP
 %token	DEFEQ	/* == */
 %token	OR	/* ++ */
 %token	VALOF	/* --- */
@@ -157,6 +157,7 @@ cmd	:	TYPEVAR newtvlist
 	|	SAVE ident	{ mod_save($2); }
 	|	EDIT		{ edit((String)0); }
 	|	EDIT ident	{ edit($2); }
+	|	HELP		{ help(); }
 	|	EXIT		{ YYACCEPT; }
 	|	MODSYM ident
 	|	PUBCONST idlist

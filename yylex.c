@@ -49,6 +49,7 @@ local	Symbol	reserved[] = {
 #ifdef	RE_EDIT
 	{ "edit",	EDIT	},
 #endif
+	{ "help",	HELP	},
 	{ "else",	ELSE	},
 	{ "end",	END	},	/* for sideways compatability */
 	{ "exit",	EXIT	},

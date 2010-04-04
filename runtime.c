@@ -6,7 +6,7 @@
 #include "error.h"
 
 /* define this to get various statistics */
-/* #define STATS */
+#define STATS
 
 /*
  *	These two constants give the ratio between stack and heap used
@@ -211,7 +211,7 @@ gc(Cell *current)
 		"[garbage collection: %ld cells recovered in %ld ms]\n",
 		num_free,
 		(after.tms_utime - before.tms_utime)*1000/HZ);
-	if (((heap - BaseHeap) - num_free)*sizeof(Cell) > max_heap)
+	if (((heap - BaseHeap) - num_free)*(int)sizeof(Cell) > max_heap)
 		max_heap = ((heap - BaseHeap) - num_free)*sizeof(Cell);
 	collections++;
 	gc_time += after.tms_utime - before.tms_utime;

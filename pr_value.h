@@ -23,4 +23,6 @@ extern	void	pr_f_actual(FILE *f, String name, int level,
 
 extern	String	val_name(int level, Path path);
 
+extern int no_quote;
+
 #endif

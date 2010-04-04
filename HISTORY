@@ -1,3 +1,12 @@
+HISTORY OF HOPELESS
+
+27 Jun 2007	Released Hopeless v0.1
+
+26 Jun 2007	fork -> Hopeless
+		option -v prints new name and version
+		interactive command "write" does not print quotatons now
+		new interactive command "help" prints list of available commands
+
 REVISION HISTORY
 
 I originally wrote this interpreter to have a well-behaved implementation

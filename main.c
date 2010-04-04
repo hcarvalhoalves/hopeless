@@ -11,6 +11,9 @@
 #include <locale.h>
 #endif
 
+#define APPNAME "Hopeless"
+#define VERSION "v0.1"
+
 global	Bool	restricted;	/* disable file I/O */
 global	int	time_limit;	/* evaluation time limit in seconds */
 
@@ -39,6 +42,10 @@ main(int argc, const char *const argv[])
 #ifdef RE_EDIT
 		when 's': script_file = ARGF();
 #endif
+		when 'v': 
+			printf(APPNAME " " VERSION "\n");
+			return 1;
+			
 		otherwise:
 			fprintf(stderr, "usage: %s -lr -f file -t nsecs\n",
 				argv0);
@@ -71,6 +78,7 @@ main(int argc, const char *const argv[])
 	if (script_file != NULL)
 		set_script(script_file);	/* re-entry after an edit */
 #endif
+
 	mod_init();		/* begin standard module */
 	preserve();
 	(void)yyparse();	/* read commands from files and user */
@@ -96,3 +104,14 @@ restart(const char *script_file)
 	error(FATALERR, "cannot restart");
 }
 #endif
+
+void help(void)
+{
+  printf(APPNAME " " VERSION "\n");
+  printf("<expression>;\n"); 
+  printf("write <expression>;\n"); 
+  printf("write <expression> to \"file\";\n"); 
+  printf("display;\n"); 
+  printf("save filename;\n");
+  printf("exit;\n");
+}

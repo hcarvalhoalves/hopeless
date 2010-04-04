@@ -32,6 +32,8 @@ local	void	pr_papp(FILE *f, Expr *expr, Cell *env, int nargs, int context);
 local	void	pr_f_papp(FILE *f, String name, Cell *env, int nargs, int context);
 local	int	prec_value(Cell *value);
 
+int no_quote = 0;
+
 global void
 pr_value(FILE *f, Cell *value)
 {
@@ -178,11 +180,11 @@ local void
 pr_vlist(FILE *f, Cell *value)
 {
 	if (is_vstring(value)) {
-		(void)fprintf(f, "\"");
+		if(!no_quote) (void)fprintf(f, "\"");
 		for ( ; value->c_class == C_CONS;
 		     value = value->c_arg->c_right)
 			pr_char(f, value->c_arg->c_left->c_char);
-		(void)fprintf(f, "\"");
+		if(!no_quote) (void)fprintf(f, "\"");
 	} else {
 		(void)fprintf(f, "[");
 		repeat {

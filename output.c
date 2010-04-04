@@ -103,8 +103,13 @@ write_value(Cell *value)
 	if (value->c_class == C_CHAR)
 		PutChar(value->c_char, out_file);
 	else {
+
+	    no_quote = 1; // Shaos
+	    
 		pr_value(out_file, value);
 		(void)fprintf(out_file, "\n");
+		
+	    no_quote = 0; // Shaos
 	}
 	return new_susp(e_wr_list, NOCELL);
 }

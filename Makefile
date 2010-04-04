@@ -7,17 +7,17 @@ exec_prefix = ${prefix}
 
 # Fiddlable parameters:
 # What the program is called.
-name	= hope
+name	= hopeless
 # Where to put the executable version.
 bindir	= ${exec_prefix}/bin
 # Small test suite, used by "make check".
 testdir = ../test
 
 # more stuff from configure:
-AWK	= mawk
+AWK	= gawk
 CC	= gcc
 CFLAGS	= -g -O2 -pipe -pedantic -Wall -W -Wshadow -Wbad-function-cast -Wcast-qual -Wcast-align -Wwrite-strings -Wpointer-arith -Wnested-externs -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations
-INSTALL	= /usr/bin/install -c
+INSTALL	= /usr/bin/ginstall -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 LDFLAGS	= 
@@ -84,9 +84,10 @@ new:
 	rm -f $(name)
 
 clean:
+	rm -f $(name)
 	rm -f *.o core a.out errors tags LOG
-	rm -f $(h_made) $(c_made) $(other_made)
-	rm -f $(tmps)
+#	rm -f $(h_made) $(c_made) $(other_made)
+#	rm -f $(tmps)
 
 clobber: clean
 	rm -f $(name) $(name).1
@@ -103,7 +104,7 @@ errors:	$(name) $(testdir)/*.in $(testdir)/*.out ../lib/*
 			diff - $(testdir)/$$STEM.out |\
 			sed "s/^/$$STEM: /";\
 	done >$@
-	LC_ALL; for file in ../lib/[a-z]*.hop;\
+	for file in ../lib/[a-z]*.hop;\
 	do	HOPEPATH=../lib nice ./$(name) -f $$file 2>&1;\
 	done >>$@
 
@@ -144,81 +145,98 @@ depend:	cfiles
 	../sh/makedepend -- $(DEFS) -- $(c_srcs) $(c_made)
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
-bad_rectype.o: bad_rectype.h config.h cons.h defs.h deftype.h error.h \
-	newstring.h structs.h table.h typevar.h
-builtin.o: builtin.h cases.h char.h config.h cons.h defs.h deftype.h error.h \
-	expr.h heap.h interpret.h newstring.h num.h output.h path.h stream.h \
-	structs.h table.h typevar.h value.h
-cases.o: cases.h char.h char_array.h config.h defs.h error.h expr.h memory.h \
-	newstring.h num.h path.h structs.h table.h
-char_array.o: char.h char_array.h config.h defs.h error.h memory.h structs.h
-compare.o: cases.h char.h compare.h config.h cons.h defs.h error.h expr.h \
-	heap.h newstring.h num.h path.h structs.h table.h value.h
-compile.o: cases.h char.h char_array.h compile.h config.h cons.h defs.h \
-	error.h expr.h newstring.h num.h path.h structs.h table.h
-deftype.o: bad_rectype.h char.h config.h cons.h defs.h deftype.h error.h \
-	expr.h functors.h memory.h newstring.h num.h path.h polarity.h \
-	structs.h table.h type_check.h typevar.h
-eval.o: char.h compile.h config.h defs.h error.h eval.h exceptions.h expr.h \
-	interpret.h newstring.h num.h number.h output.h path.h stream.h \
-	structs.h table.h type_check.h
-expr.o: cases.h char.h compile.h config.h cons.h defs.h error.h expr.h \
-	memory.h newstring.h num.h number.h path.h structs.h table.h \
-	type_check.h
-functor_type.o: char.h config.h defs.h deftype.h error.h functor_type.h \
-	heap.h newstring.h num.h path.h structs.h table.h type_value.h \
-	typevar.h
-functors.o: char.h config.h cons.h defs.h deftype.h error.h expr.h functors.h \
-	newstring.h num.h path.h structs.h table.h typevar.h
-interpret.o: cases.h char.h char_array.h config.h cons.h defs.h error.h \
-	expr.h heap.h interpret.h interrupt.h newstring.h num.h output.h \
-	path.h pr_value.h stack.h stream.h structs.h table.h value.h
-interrupt.o: config.h defs.h error.h interrupt.h structs.h
-main.o: config.h defs.h error.h memory.h module.h newstring.h plan9args.h \
-	source.h structs.h
-memory.o: align.h config.h defs.h error.h memory.h structs.h
-module.o: builtin.h char.h compare.h config.h cons.h defs.h deftype.h error.h \
-	expr.h hopelib.h memory.h module.h names.h newstring.h num.h op.h \
-	output.h path.h pr_expr.h pr_type.h remember_type.h set.h source.h \
-	structs.h table.h typevar.h
-newstring.o: align.h config.h defs.h error.h memory.h newstring.h structs.h
-number.o: char.h config.h cons.h defs.h error.h expr.h newstring.h num.h \
-	number.h path.h pr_expr.h structs.h table.h
-output.o: cases.h char.h config.h defs.h error.h expr.h heap.h memory.h \
-	newstring.h num.h output.h path.h pr_ty_value.h pr_value.h structs.h \
-	table.h type_check.h type_value.h value.h
-path.o: config.h defs.h error.h memory.h path.h structs.h
-polarity.o: config.h defs.h deftype.h error.h names.h newstring.h polarity.h \
-	structs.h table.h typevar.h
-pr_expr.o: char.h config.h cons.h defs.h error.h expr.h names.h newstring.h \
-	num.h op.h path.h pr_expr.h pr_value.h print.h structs.h table.h
-pr_ty_value.o: char.h config.h defs.h deftype.h error.h heap.h names.h \
-	newstring.h num.h op.h path.h pr_ty_value.h print.h structs.h table.h \
+bad_rectype.o:  bad_rectype.h config.h cons.h defs.h \
+	deftype.h error.h newstring.h structs.h table.h typevar.h
+builtin.o:  builtin.h cases.h char.h config.h cons.h \
+	defs.h deftype.h error.h expr.h heap.h interpret.h newstring.h num.h \
+	output.h path.h stream.h structs.h table.h typevar.h value.h
+cases.o:  cases.h char.h char_array.h config.h defs.h \
+	error.h expr.h memory.h newstring.h num.h path.h structs.h table.h
+char.o: 
+char_array.o:  char.h char_array.h config.h defs.h error.h \
+	memory.h structs.h
+compare.o:  cases.h char.h compare.h config.h cons.h \
+	defs.h error.h expr.h heap.h newstring.h num.h path.h structs.h \
+	table.h value.h
+compile.o:  cases.h char.h char_array.h compile.h config.h \
+	cons.h defs.h error.h expr.h newstring.h num.h path.h structs.h \
+	table.h
+deftype.o:  bad_rectype.h char.h config.h cons.h defs.h \
+	deftype.h error.h expr.h functors.h memory.h newstring.h num.h path.h \
+	polarity.h structs.h table.h type_check.h typevar.h
+eval.o:  char.h compile.h config.h defs.h error.h eval.h \
+	exceptions.h expr.h interpret.h newstring.h num.h number.h output.h \
+	path.h stream.h structs.h table.h type_check.h
+expr.o:  cases.h char.h compile.h config.h cons.h defs.h \
+	error.h expr.h memory.h newstring.h num.h number.h path.h structs.h \
+	table.h type_check.h
+functor_type.o:  char.h config.h defs.h deftype.h error.h \
+	functor_type.h heap.h newstring.h num.h path.h structs.h table.h \
 	type_value.h typevar.h
-pr_type.o: config.h cons.h defs.h deftype.h error.h names.h newstring.h op.h \
-	polarity.h pr_type.h print.h structs.h table.h typevar.h
-pr_value.o: char.h config.h cons.h defs.h error.h expr.h heap.h interpret.h \
-	names.h newstring.h num.h op.h path.h pr_expr.h pr_value.h print.h \
-	stack.h structs.h table.h value.h
-remember_type.o: char.h config.h cons.h defs.h deftype.h error.h expr.h \
-	newstring.h num.h path.h remember_type.h structs.h table.h typevar.h
-runtime.o: char.h config.h defs.h error.h heap.h memory.h num.h path.h \
-	stack.h structs.h type_check.h
-set.o: config.h defs.h error.h set.h structs.h
-source.o: config.h defs.h error.h exceptions.h interrupt.h module.h \
-	newstring.h source.h structs.h
-stream.o: builtin.h char.h config.h cons.h defs.h error.h expr.h heap.h \
-	newstring.h num.h path.h stream.h structs.h table.h value.h
-table.o: config.h defs.h error.h newstring.h structs.h table.h
-type_check.o: char.h config.h cons.h defs.h deftype.h error.h exceptions.h \
-	expr.h functor_type.h heap.h newstring.h num.h op.h path.h pr_expr.h \
-	pr_ty_value.h pr_type.h structs.h table.h type_check.h type_value.h \
+functors.o:  char.h config.h cons.h defs.h deftype.h \
+	error.h expr.h functors.h newstring.h num.h path.h structs.h table.h \
 	typevar.h
-type_value.o: char.h config.h defs.h deftype.h error.h heap.h newstring.h \
-	num.h path.h structs.h table.h type_check.h type_value.h typevar.h
-value.o: char.h config.h defs.h error.h heap.h num.h path.h structs.h value.h
-yylex.o: char.h config.h defs.h error.h names.h newstring.h num.h op.h \
-	source.h structs.h table.h text.h typevar.h yyparse.h
-yyparse.o: char.h config.h cons.h defs.h deftype.h error.h eval.h expr.h \
-	memory.h module.h newstring.h num.h op.h path.h structs.h table.h \
-	text.h typevar.h
+interpret.o:  cases.h char.h char_array.h config.h cons.h \
+	defs.h error.h expr.h heap.h interpret.h interrupt.h newstring.h \
+	num.h output.h path.h pr_value.h stack.h stream.h structs.h table.h \
+	value.h
+interrupt.o:  config.h defs.h error.h interrupt.h \
+	structs.h
+main.o:  config.h defs.h error.h memory.h module.h \
+	newstring.h plan9args.h source.h structs.h
+memory.o:  align.h config.h defs.h error.h memory.h \
+	structs.h
+module.o:  builtin.h char.h compare.h config.h cons.h \
+	defs.h deftype.h error.h expr.h hopelib.h memory.h module.h names.h \
+	newstring.h num.h op.h output.h path.h pr_expr.h pr_type.h \
+	remember_type.h set.h source.h structs.h table.h typevar.h
+newstring.o:  align.h config.h defs.h error.h memory.h \
+	newstring.h structs.h
+number.o:  char.h config.h cons.h defs.h error.h expr.h \
+	newstring.h num.h number.h path.h pr_expr.h structs.h table.h
+output.o:  cases.h char.h config.h defs.h error.h expr.h \
+	heap.h memory.h newstring.h num.h output.h path.h pr_ty_value.h \
+	pr_value.h structs.h table.h type_check.h type_value.h value.h
+path.o:  config.h defs.h error.h memory.h path.h structs.h
+polarity.o:  config.h defs.h deftype.h error.h names.h \
+	newstring.h polarity.h structs.h table.h typevar.h
+pr_expr.o:  char.h config.h cons.h defs.h error.h expr.h \
+	names.h newstring.h num.h op.h path.h pr_expr.h pr_value.h print.h \
+	structs.h table.h
+pr_ty_value.o:  char.h config.h defs.h deftype.h error.h \
+	heap.h names.h newstring.h num.h op.h path.h pr_ty_value.h print.h \
+	structs.h table.h type_value.h typevar.h
+pr_type.o:  config.h cons.h defs.h deftype.h error.h \
+	names.h newstring.h op.h polarity.h pr_type.h print.h structs.h \
+	table.h typevar.h
+pr_value.o:  char.h config.h cons.h defs.h error.h expr.h \
+	heap.h interpret.h names.h newstring.h num.h op.h path.h pr_expr.h \
+	pr_value.h print.h stack.h structs.h table.h value.h
+remember_type.o:  char.h config.h cons.h defs.h deftype.h \
+	error.h expr.h newstring.h num.h path.h remember_type.h structs.h \
+	table.h typevar.h
+runtime.o:  char.h config.h defs.h error.h heap.h memory.h \
+	num.h path.h stack.h structs.h type_check.h
+set.o:  config.h defs.h error.h set.h structs.h
+source.o:  config.h defs.h error.h exceptions.h \
+	interrupt.h module.h newstring.h source.h structs.h
+stream.o:  builtin.h char.h config.h cons.h defs.h error.h \
+	expr.h heap.h newstring.h num.h path.h stream.h structs.h table.h \
+	value.h
+table.o:  config.h defs.h error.h newstring.h structs.h \
+	table.h
+type_check.o:  char.h config.h cons.h defs.h deftype.h \
+	error.h exceptions.h expr.h functor_type.h heap.h newstring.h num.h \
+	op.h path.h pr_expr.h pr_ty_value.h pr_type.h structs.h table.h \
+	type_check.h type_value.h typevar.h
+type_value.o:  char.h config.h defs.h deftype.h error.h \
+	heap.h newstring.h num.h path.h structs.h table.h type_check.h \
+	type_value.h typevar.h
+value.o:  char.h config.h defs.h error.h heap.h num.h \
+	path.h structs.h value.h
+yylex.o:  char.h config.h defs.h error.h names.h \
+	newstring.h num.h op.h source.h structs.h table.h text.h typevar.h \
+	yyparse.h
+yyparse.o:  char.h config.h cons.h defs.h deftype.h \
+	error.h eval.h expr.h memory.h module.h newstring.h num.h op.h path.h \
+	structs.h table.h text.h typevar.h
