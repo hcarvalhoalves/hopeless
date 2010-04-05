@@ -103,7 +103,6 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
 03 Jun 2009     path to libraries changed to /usr/local/share/hopeless
                 created man file hopeless.1 (modified hope.1)
                 fixed "make install" for Hopeless
-                ref_man.pdf and hope_tut.pdf are part of distribution now
                 
 28 Aug 2009     new library lib/db_sqlite.hop (database support with sqlite3)
 

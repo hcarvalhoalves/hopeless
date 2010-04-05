@@ -23,7 +23,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 SUBDIRECTORIES
 
-doc	some original documentation
 lib     various Hope modules (copy of /usr/local/share/hopeless)
 test    a small test suite for the interpreter
 
