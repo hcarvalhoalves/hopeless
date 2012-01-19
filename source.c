@@ -254,7 +254,7 @@ static  const   char    *const  errname[] = {
                 abort();
         if (errtype >= FATALERR) {
                 if (gen_listing)        /* copy the rest to the listing */
-                        while (getline())
+                        while (mygetline())
                                 ;
                 (void)exit(1);
         }
@@ -291,7 +291,7 @@ interactive(void)
  *      otherwise it ends in a newline (whitespace) and then a null.
  */
 global Bool
-getline(void)
+mygetline(void)
 {
         if (atend && cur_source >= source) {
                 if (cur_source > source)

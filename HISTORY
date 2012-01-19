@@ -119,3 +119,4 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
 		
 04 Apr 2010 >>> RELEASED HOPELESS v0.5
 		
+04 Jul 2011	fixed conflict with new GCC (function getline)
