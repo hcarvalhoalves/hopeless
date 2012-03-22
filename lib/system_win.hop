@@ -1,7 +1,16 @@
+!! Library system_win.hop for Hopeless v0.6
+!! Alexander A. Shabarshin <ashabarshin@gmail.com>
+
 uses lines,string,words;
 
-dec stdin : list(char);
+dec stdin : string;
 --- stdin <= "con";
 
-dec dir : string -> list(string);
+dec getc : list char;
+--- getc <= read(stdin);
+
+dec gets : list string;
+--- gets <= lines(getc);
+
+dec dir : string -> strings;
 --- dir(s) <= words(read("!cmd /C DIR /B " <> s));

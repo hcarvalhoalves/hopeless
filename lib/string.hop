@@ -1,4 +1,61 @@
-! String library
+!! Library string.hop for Hopeless v0.6
+!! Alexander A. Shabarshin <ashabarshin@gmail.com>
 
-type string == list(char);
+type string == list char;
 
+type strings == list string;
+
+dec explode : string # char -> strings;
+--- explode([],d) <= [];
+--- explode(c::cs,d) <= if c=d then []::explode(cs,d) else (lambda [] => [[c]] | l::ls => (c::l)::ls ) (explode(cs,d));
+
+dec quote_end : string -> string;
+--- quote_end(nil) <= '"'::nil;
+--- quote_end(x::y) <= x::quote_(y);
+
+dec quote : string -> string;
+--- quote(nil) <= nil;
+--- quote(s) <= quote_end('"'::s);
+
+dec equal : string # string -> truval;
+--- equal(nil,nil) <= true;
+--- equal(nil,l) <= false;
+--- equal(l,nil) <= false;
+--- equal(x::y,z::l) <= if x=z then equal(y,l) else false;
+
+dec equal_until : string # string # char -> truval;
+--- equal_until(nil,l,c) <= false;
+--- equal_until(x::y,nil,c) <= if x=c then true else false;
+--- equal_until(x::y,z::l,c) <= if x=z then equal_until(y,l,c) else false;
+
+dec skip_until : string # char -> string;
+--- skip_until(nil,c) <= nil;
+--- skip_until(x::y,c) <= if x=c then y else skip_until(y,c);
+
+dec ltrim : string -> string;
+--- ltrim(l) <= l;
+--- ltrim(' '::l) <= ltrim(l);
+--- ltrim('\t'::l) <= ltrim(l);
+
+dec strmap : strings # (string -> string) -> strings;
+--- strmap(nil,f) <= nil;
+--- strmap(h::l,f) <= f(h)::strmap(l,f);
+
+dec strmap2 : strings # (string # alpha -> string) # alpha -> strings;
+--- strmap2(nil,f,a) <= nil;
+--- strmap2(h::l,f,a) <= f(h,a)::strmap2(l,f,a);
+
+dec strmap3 : strings # (string # alpha # beta -> string) # alpha # beta -> strings;
+--- strmap3(nil,f,a,b) <= nil;
+--- strmap3(h::l,f,a,b) <= f(h,a,b)::strmap3(l,f,a,b);
+
+dec envdel : strings # string -> strings;
+--- envdel(nil,k) <= nil;
+--- envdel(x::l,k) <= if equal_until(x,k,'=') then r else x::r where r==envdel(l,k);
+
+dec envset : strings # string # string -> strings;
+--- envset(l,k,v) <= (k<>"="<>v)::envdel(l,k);
+
+dec envget : strings # string -> string;
+--- envget(nil,l) <= nil;
+--- envget(x::y,l) <= if equal_until(x,l,'=') then skip_until(x,'=') else envget(y,l);

@@ -1,2 +1,2 @@
 #define APPNAME "Hopeless"
-#define VERSION "v0.5"
+#define VERSION "v0.6RC"
