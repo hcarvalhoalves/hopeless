@@ -1,13 +1,10 @@
-!! Library system_nix.hop for Hopeless v0.6
+!! Library system_nix.hop (system.hop for Linux) for Hopeless v0.6
 !! Alexander A. Shabarshin <ashabarshin@gmail.com>
 
 uses lines,string;
 
-dec stdin : string;
---- stdin <= "/dev/stdin";
-
 dec getc : list char;
---- getc <= read(stdin);
+--- getc <= read("/dev/stdin");
 
 dec gets : list string;
 --- gets <= lines(getc);

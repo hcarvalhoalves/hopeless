@@ -124,3 +124,5 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
 24 Mar 2012	extended lib/string.hop (added bunch of useful functions)
 		modified lib/db_sqlite.hop and lib/system.hop ("getc" and "gets" are back, "stdin" removed)
 		reverted test _input.hop
+		fixed AUTHORS and README
+		returned folder "doc" with reference manual and tutorial (removed latex2html option)

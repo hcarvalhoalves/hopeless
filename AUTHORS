@@ -1,9 +1,17 @@
-Ross Paterson <ross@soi.city.ac.uk> 
-http://www.soi.city.ac.uk/~ross/Hope/
+*** Alexander Shabarshin <ashabarshin@gmail.com>
+    http://www.hopelog.com
 
-    Original hope interpreter
-    
-Alexander Shabarshin <ashabarshin@gmail.com> 
-http://www.hopelog.com
+    Hopeless fork and new functionality (2007-2012)
 
-    Fork and new functionality
+*** Ross Paterson <ross@soi.city.ac.uk>
+    http://www.soi.city.ac.uk/~ross/Hope/
+
+    Original hope interpreter (1988-1999)
+
+*** Bill Segal
+
+    Amiga section (1989)
+
+*** Andrew Moran
+
+    Simplification of pattern compilation (1989)

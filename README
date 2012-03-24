@@ -2,8 +2,8 @@ A lazy interpreter for the functional language Hope
 Copyright 1990,1991,1993 by Ross Paterson <ross@soi.city.ac.uk>
 See also the WWW page at http://www.soi.city.ac.uk/~ross/Hope/
 
-Minor modifications by Alexander Shabarshin <ashabarshin@gmail.com>
-See http://www.hopelog.com for more info
+Fork and new functionality by Alexander Shabarshin <ashabarshin@gmail.com>
+See http://www.hopelog.com for more info about "Hopeless"
 
 LICENSE AND DISCLAIMER
 
@@ -23,8 +23,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 SUBDIRECTORIES
 
+doc     a short reference manual (in LaTeX)
 lib     various Hope modules (copy of /usr/local/share/hopeless)
 test    a small test suite for the interpreter
 
 Use "make" to build hopeless binary file
-and "make install" to install everything to /usr/local
+Then "make install" to install everything to /usr/local

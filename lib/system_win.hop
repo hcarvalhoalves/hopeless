@@ -1,13 +1,10 @@
-!! Library system_win.hop for Hopeless v0.6
+!! Library system_win.hop (system.hop for Windows) for Hopeless v0.6
 !! Alexander A. Shabarshin <ashabarshin@gmail.com>
 
 uses lines,string,words;
 
-dec stdin : string;
---- stdin <= "con";
-
 dec getc : list char;
---- getc <= read(stdin);
+--- getc <= read("con");
 
 dec gets : list string;
 --- gets <= lines(getc);
