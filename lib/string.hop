@@ -6,12 +6,12 @@ type string == list char;
 type strings == list string;
 
 dec explode : string # char -> strings;
---- explode([],d) <= [];
---- explode(c::cs,d) <= if c=d then []::explode(cs,d) else (lambda [] => [[c]] | l::ls => (c::l)::ls ) (explode(cs,d));
+--- explode([],c) <= [[]];
+--- explode(h::t,c) <= if h=c then []::explode(t,c) else let x::y==explode(t,c) in (h::x)::y;
 
 dec quote_end : string -> string;
 --- quote_end(nil) <= '"'::nil;
---- quote_end(x::y) <= x::quote_(y);
+--- quote_end(x::y) <= x::quote_end(y);
 
 dec quote : string -> string;
 --- quote(nil) <= nil;

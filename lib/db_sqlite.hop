@@ -1,17 +1,12 @@
-! Database access (sqlite3)
+!! Library db_sqlite.hop (interface to sqlite3 databases) for Hopeless v0.6
+!! Alexander A. Shabarshin <ashabarshin@gmail.com>
 
 uses string,lines,list;
 
-dec pipes1 : list(char) # list(string) -> list(string);
---- pipes1(nil,l) <= reverse(l);
---- pipes1('|'::y,l) <= pipes1(y,nil::l);
---- pipes1(x::y,nil) <= pipes1(y,(x::nil)::nil);
---- pipes1(x::y,h::l) <= pipes1(y,(h<>(x::nil))::l);
-
-dec pipes : list(list char) -> list(list(string));
+dec pipes : strings -> list strings;
 --- pipes(nil) <= nil;
---- pipes(x::y) <= pipes1(x,nil)::pipes(y);
+--- pipes(x::y) <= explode(x,'|')::pipes(y);
 
-dec sql : string # string -> list(list(string));
+dec sql : string # string -> list strings;
 --- sql(file,statement) <= 
     pipes(lines(read("!sqlite3 -noheader -list "<>file<>" '"<>statement<>"'")));
