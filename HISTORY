@@ -73,11 +73,11 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
 
 01 Sep 2007     function "read" now can run commands (if filename starts with !)
                 new example test/_run.hop demonstrates #!/..., argv and read("!...")
-                
+
 02 Sep 2007 >>> RELEASED HOPELESS v0.2
 
 03 Sep 2007     new example test/_input.hop demonstrates input from keyboard (stdin)
- 
+
 04 Sep 2007     fixed lib/lines.hop to skip '\r'
                 new library lib/system.hop and lib/system_win.hop (functons "getc" and "gets")
 
@@ -103,20 +103,24 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
 03 Jun 2009     path to libraries changed to /usr/local/share/hopeless
                 created man file hopeless.1 (modified hope.1)
                 fixed "make install" for Hopeless
-                
+
 28 Aug 2009     new library lib/db_sqlite.hop (database support with sqlite3)
 
 29 Aug 2009     added functions "del" and "write_to" to lib/system.hop
                 check for '\n' and '\r' before run commands ("!...")
-                
+
 03 Sep 2009     defined constant "stdin" instead of functions "getc" and "gets" (lib/system.hop)
                 modified test _input.hop
-                
+
 06 Sep 2009	modified function "write_to" in lib/system.hop
 
 03 Apr 2010	created git repository (original, v0.1, v0.2, v0.3, v0.4, current)
 		fixed AUTHORS and README
-		
+
 04 Apr 2010 >>> RELEASED HOPELESS v0.5
-		
+
 04 Jul 2011	fixed conflict with new GCC (function getline)
+
+24 Mar 2012	extended lib/string.hop (added bunch of useful functions)
+		modified lib/db_sqlite.hop and lib/system.hop ("getc" and "gets" are back, "stdin" removed)
+		reverted test _input.hop
