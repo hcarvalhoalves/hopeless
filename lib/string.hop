@@ -49,13 +49,13 @@ dec strmap3 : strings # (string # alpha # beta -> string) # alpha # beta -> stri
 --- strmap3(nil,f,a,b) <= nil;
 --- strmap3(h::l,f,a,b) <= f(h,a,b)::strmap3(l,f,a,b);
 
-dec envdel : strings # string -> strings;
---- envdel(nil,k) <= nil;
---- envdel(x::l,k) <= if equal_until(x,k,'=') then r else x::r where r==envdel(l,k);
+dec pairs_del : strings # string -> strings;
+--- pairs_del(nil,k) <= nil;
+--- pairs_del(x::l,k) <= if equal_until(x,k,'=') then r else x::r where r==pairs_del(l,k);
 
-dec envset : strings # string # string -> strings;
---- envset(l,k,v) <= (k<>"="<>v)::envdel(l,k);
+dec pairs_set : strings # string # string -> strings;
+--- pairs_set(l,k,v) <= (k<>"="<>v)::pairs_del(l,k);
 
-dec envget : strings # string -> string;
---- envget(nil,l) <= nil;
---- envget(x::y,l) <= if equal_until(x,l,'=') then skip_until(x,'=') else envget(y,l);
+dec pairs_get : strings # string -> string;
+--- pairs_get(nil,l) <= nil;
+--- pairs_get(x::y,l) <= if equal_until(x,l,'=') then skip_until(x,'=') else pairs_get(y,l);

@@ -7,8 +7,8 @@
 #include "builtin.h"
 
 #define MAX_STREAMS     100     /* max. no. of streams (checked)         */
-#define MAX_FILENAME    256     /* max. len. of file name (checked)      */
-#define MAX_INPUTLINE   256     /* max. len. of tty input line (checked) */
+#define MAX_FILENAME    1024    /* max. len. of file name (checked)      */
+#define MAX_INPUTLINE   1024    /* max. len. of tty input line (checked) */
 
 /*
  * Table of open streams,
@@ -36,7 +36,7 @@ open_stream(Cell *arg)
         {
                 if (fp == &str_table[MAX_STREAMS])
                         error(EXECERR, "stream table full");
-        }               
+        }
 
         if(!restricted && *filename=='!')
         {

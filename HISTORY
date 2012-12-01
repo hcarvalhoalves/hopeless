@@ -126,3 +126,6 @@ HISTORY OF HOPELESS [Alexander Shabarshin]
 		reverted test _input.hop
 		fixed AUTHORS and README
 		returned folder "doc" with reference manual and tutorial (removed latex2html option)
+
+30 Nov 2012	max length of filename is 1024 now for streams and back to 100 for sources
+		max length of inputstream changed to 1024
